@@ -1,14 +1,15 @@
 const pool = require("../../config/database");
 module.exports = {
   register: (data, callback) => {
+
     pool.query(
       `INSERT INTO registration(user_name,user_email,user_password) values(?,?,?)`,
-      [data.userName, data.email, data.passwowrd],
+      [data.userName, data.email, data.password],
       (err, result) => {
         if (err) {
           return callback(err);
         }
-        return callback(nUll, result);
+        return callback(null, result);
       }
     );
   },
