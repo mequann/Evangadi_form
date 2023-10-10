@@ -13,7 +13,7 @@ module.exports = {
       }
     );
   },
-  profile: (data, call) => {
+  profile: (data, callback) => {
     pool.query(
       `INSERT INTO profile(user_id,first_name,last_name) values(?,?,?)`,
       [data.useerId, data.firstName, data.lastName],
@@ -39,7 +39,7 @@ module.exports = {
     pool.query(
       `SELECT * FROM registration WHERE user_email=?`,
       [email],
-      (err, callback) => {
+      (err, result) => {
         if (err) {
           return callback(err);
         }
