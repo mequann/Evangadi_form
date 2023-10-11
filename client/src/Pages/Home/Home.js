@@ -3,15 +3,15 @@ import './Home.css'
 import { UserContext } from '../../Context/UserContext'
 import { useNavigate } from 'react-router-dom';
 
-const Home = () => {
+const Home = ({logout}) => {
   const [userData,setUserData]=useContext(UserContext);
   const navigate=useNavigate()
   useEffect(()=>{
     if(!userData.user) {
-      naviagte('/login')
+      navigate('/login')
     }
 
-  },[userData.user, naviagte])
+  },[userData.user, navigate])
   return (
     <div><h1>Hello {userData.user?.display_name}</h1>
     <button onClick={logout}>logout</button>

@@ -4,7 +4,7 @@ import { UserContext } from '../../Context/UserContext';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 const Login = () => {const [userData,setUserData]=useContext(UserContext);
-  const naviagte=useNavigate()
+  const navigte=useNavigate()
   const [form,setForm]=useState({})
   const handlechange=(e)=>{
     setForm({...form,[e.target.name]:e.target.value})
@@ -18,7 +18,19 @@ const Login = () => {const [userData,setUserData]=useContext(UserContext);
         email:form.email,
         password:form.password
       })
+      setUserData({
+        token:loginRes.data.token,
+        user:loginRes.data.user
+      });
+      localStorage.setItem('auth-token',loginRes.data.token)
+      //navigate to  home page
+      navigte('/')
+
     }
+    catch(err)
+    {console.log('problem', err.response.data.msg)
+    alert(err.response.data.msg)
+  }
 
   }
   return (
@@ -26,11 +38,11 @@ const Login = () => {const [userData,setUserData]=useContext(UserContext);
     <form onSubmit={handleSubmit}>
       <label>Email</label>
       <input type='text' name='email'
-      onChange={handleChange}
+      onChange={handlechange}
       /><br/>
 <label>Password</label>
       <input type='password' name='password'
-      onChange={handleChange}
+      onChange={handlechange}
       /><br/>
       <button>submit</button>
     </form >

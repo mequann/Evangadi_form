@@ -47,11 +47,11 @@ useEffect(()=>{checkLoggedIn()},[])
   return (
       <Router>
     <div className="App">
-        <routes>
-          <route path='/' element={<Home logout={logout}/>}/>
-          <route path='/login' element={<Login/>}/>
-          <route path='/signup' element={<SignUp/>}/>
-        </routes>
+        <Routes>
+          <Route path='/' element={<Home logout={logout}/>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/signup' element={<SignUp/>}/>
+        </Routes>
     </div>
       </Router>
       
