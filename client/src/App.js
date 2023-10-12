@@ -20,17 +20,22 @@ function App() {
       token='';
     }
     else{
-      //if token exists in localstorage then use auth to verify token and get user info
-      const userRes=await axios.get('http://localhost:4000/api/users',{
-        headers:{'x-auth-token':token}
-      })
-      setUserData({
-        token,
-        user:{
-    id:userRes.data.dta.user_id,
-    display_name:userRes.data.data.user_name
-        }
-      })
+    try{
+        //if token exists in localstorage then use auth to verify token and get user info
+        const userRes=await axios.get('http://localhost:4000/api/users',{
+          headers:{'x-auth-token':token}
+        })
+        setUserData({
+          token,
+          user:{
+      id:userRes.data.dta.user_id,
+      display_name:userRes.data.data.user_name
+          }
+        })
+    }
+    catch (err) {
+      console.log("problem", err.response);
+    }
     }
   }
   const logout=()=>{

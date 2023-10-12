@@ -16,7 +16,9 @@ module.exports = {
   profile: (data, callback) => {
     pool.query(
       `INSERT INTO profile(user_id,first_name,last_name) values(?,?,?)`,
-      [data.useerId, data.firstName, data.lastName],
+      [data.useerId, 
+        data.firstName, 
+        data.lastName],
       (err, result) => {
         if (err) {
           callback(err);

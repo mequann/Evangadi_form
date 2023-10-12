@@ -16,10 +16,10 @@ let registration = `CREATE TABLE if not exists registration(
 let profile = `CREATE TABLE if not exists profile(
         user_profile_id int auto_increment,
         user_id int not null,
-        first_name  varchar(255) not null,
-        last_name varchar(255) not null,
+        first_name  varchar(20) not null,
+        last_name varchar(20) not null,
         PRIMARY KEY(user_profile_id),
-        FOREIGN KEY (user_Id)  REFERENCES registration(user_Id)
+        FOREIGN KEY (user_id)  REFERENCES registration(user_id)
 
     )`;
 let question = `CREATE TABLE if not exists question(
