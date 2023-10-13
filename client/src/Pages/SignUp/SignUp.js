@@ -38,28 +38,41 @@ const SignUp = () => {
   };
   //handleSubmit()
   return (
-    <div>
-      <h1>SignUp</h1>
+    <div className="signup">
+      {/* <h1>SignUp</h1> */}
+      <div className="signup__form">
       <form onSubmit={handleSubmit}>
-        <>firstName</>
-        <input type="text" name="firstName" onChange={handleChange} />
+        {/* <label>firstName:</label> */}
+        <input type="text" name="firstName" onChange={handleChange}  placeholder="firstName"/>
 
         <br />
-        <label>lastName</label>
-        <input type="text" name="lastName" onChange={handleChange} />
+        {/* <label>lastName</label> */}
+        <input type="text" name="lastName" onChange={handleChange} placeholder="last"/>
         <br />
-        <label>userName</label>
-        <input type="text" name="userName" onChange={handleChange} />
+        {/* <label>userName</label> */}
+        <input type="text" name="userName" onChange={handleChange} pattern="userName"/>
         <br />
-        <label>Email</label>
-        <input type="text" name="email" onChange={handleChange} />
+        {/* <label>Email</label> */}
+        <input type="text" name="email" onChange={handleChange}  placeholder="Email"/>
         <br />
-        <label>password</label>
-        <input type="password" name="password" onChange={handleChange} />
+        {/* <label>password</label> */}
+        <input type="password" name="password" onChange={handleChange} placeholder="password"/>
         <br />
         <button >submit</button>
       </form>
-      <Link to="/login">All Ready Hvave an accoount?</Link>
+      <Link to="/login"  style={{textDecoration:"none"}}>All Ready Hvave an accoount?</Link>
+      </div>
+      <div className="signup__righ">
+        <h5>About</h5>
+        <h2>Evangadi Network Q&A</h2>
+        <p>
+        No matter what stage of life you are in, whether you’re just starting elementary school or being promoted to CEO of a Fortune 500 company, you have much to offer to those who are trying to follow in your footsteps.
+
+Wheather you are willing to share your knowledge or you are just looking to meet mentors of your own, please start by joining the network here.
+
+
+        </p>
+      </div>
     </div>
   );
 };

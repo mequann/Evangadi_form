@@ -34,19 +34,35 @@ const Login = () => {const [userData,setUserData]= useDataContext();
 
   }
   return (
-    <div><h1>Login</h1>
-    <form onSubmit={handleSubmit}>
-      <label>Email</label>
-      <input type='text' name='email'
+    <div className='login'>
+      {/* <h1>Login</h1> */}
+   <div className='login__form'>
+   <form onSubmit={handleSubmit}>
+      {/* <label>Email</label> */}
+      <input type='text' name='email' placeholder='Email'
       onChange={handlechange}
       /><br/>
-<label>Password</label>
+{/* <label>Password</label> */}
       <input type='password' name='password'
-      onChange={handlechange}
+      onChange={handlechange} placeholder='password'
       /><br/>
-      <button>submit</button>
-    </form >
+      <button>submit</button><br/>
+    </form ><br/>
     <Link to='/signup'>create a new account</Link>
+    </div>
+    <div className="login__right">
+      <h5>About</h5>
+        <h2>Evangadi Network Q&A</h2>
+        <p>
+        No matter what stage of life you are in, whether you’re just starting elementary school or being promoted to CEO of a Fortune 500 company, you have much to offer to those who are trying to follow in your footsteps.
+
+Wheather you are willing to share your knowledge or you are just looking to meet mentors of your own, please start by joining the network here.
+
+
+        </p>
+   </div>
+        
+     
 
     </div>
   )
