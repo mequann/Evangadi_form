@@ -1,6 +1,6 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
  
-export const UserContext=createContext()
+const UserContext = createContext()
 
 const UserProvider = (props) => {
     const [userData,setUserData]=useState({
@@ -17,4 +17,4 @@ const UserProvider = (props) => {
 };
 
 export default UserProvider;
-// export const useDataContext=useContext(UserContext)//
+export const useDataContext = ()=> useContext(UserContext);

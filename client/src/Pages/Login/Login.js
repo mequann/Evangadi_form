@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './Login.css'
-import { UserContext } from '../../Context/UserContext';
+import {useDataContext } from '../../Context/UserContext';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-const Login = () => {const [userData,setUserData]=useContext(UserContext);
+const Login = () => {const [userData,setUserData]= useDataContext();
   const navigte=useNavigate()
   const [form,setForm]=useState({})
   const handlechange=(e)=>{
@@ -28,7 +28,7 @@ const Login = () => {const [userData,setUserData]=useContext(UserContext);
 
     }
     catch(err)
-    {console.log('problem', err.response.data.msg)
+    {console.log('problem', err.message)
     alert(err.response.data.msg)
   }
 

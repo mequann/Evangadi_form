@@ -8,7 +8,7 @@ const {
 const pool = require("../../config/database");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { json } = require("express");
+// const { json } = require("express");
 module.exports = {
   createUser: (req, res) => {
     const { userName, firstName, lastName, email, password } = req.body;
@@ -36,27 +36,32 @@ module.exports = {
         else {
           let salt = bcrypt.genSaltSync(10);
           req.body.password = bcrypt.hashSync(password, salt);
-          console.log(rer.body);
+          console.log(password);
 
           register(req.body, (err, results) => {
+
             if (err) {
               console.log(err);
-              return res.status(500).json({ msg: "data connection error" });
+              return res.status(500).json({ msg: "data connection error 33" });
             }
             pool.query(
-              `SELECT * FROM registration WHERE user_email=?`[email],
+              `SELECT * FROM registration WHERE user_email=?`,[email],
               (err, results) => {
                 if (err) {
-                  res.status(500).json({ msg: "data conection error" });
+                  res.status(500).json({ msg: "data conection error " });
                 }
+                console.log("resultsss")
+                console.log(results)
                 req.body.userId = results[0].user_id;
+                console.log("user data")
                 console.log(req.body);
+
                 profile(req.body, (err, results) => {
                   if (err) {
                     console.log(err);
-                    return res
+                    return res   
                       .status(500)
-                      .json({ msg: "data connection error" });
+                      .json({ msg: "data connection error 11" });
                   }
                   return res
                     .status(200)
@@ -95,6 +100,7 @@ module.exports = {
   },
   logIn: (req, res) => {
     const { email, password } = req.body;
+    console.log(req.body ,"hhhhh")
     //validation
     if (!email || !password) {
       return res.status(400).json({ msg: "Not all fields have been provided" });

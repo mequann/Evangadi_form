@@ -7,10 +7,12 @@ const userRouter = require("./Server/api/users/user.router");
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+// route for  creating user and profile
 app.use("/api/users", userRouter);
-
+  
 const port = process.env.PORT;
 
 app.listen(port, () => {
   console.log("listning though port", port);
 });
+         

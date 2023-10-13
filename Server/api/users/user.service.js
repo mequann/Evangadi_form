@@ -2,6 +2,7 @@ const pool = require("../../config/database");
 module.exports = {
   register: (data, callback) => {
 
+    // const {userName,email,password,userId,firstName,lastName}=req.body
     pool.query(
       `INSERT INTO registration(user_name,user_email,user_password) values(?,?,?)`,
       [data.userName, data.email, data.password],
@@ -14,9 +15,10 @@ module.exports = {
     );
   },
   profile: (data, callback) => {
+    console.log(data,"from profile")
     pool.query(
       `INSERT INTO profile(user_id,first_name,last_name) values(?,?,?)`,
-      [data.useerId, 
+      [data.userId, 
         data.firstName, 
         data.lastName],
       (err, result) => {

@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from 'react'
 import './Home.css'
-import { UserContext } from '../../Context/UserContext'
+import {  useDataContext } from '../../Context/UserContext'
 import { useNavigate } from 'react-router-dom';
 
 const Home = ({logout}) => {
-  const [userData,setUserData]=useContext(UserContext);
+  const [userData,setUserData]= useDataContext();
   const navigate=useNavigate()
   useEffect(()=>{
     if(!userData.user) {
