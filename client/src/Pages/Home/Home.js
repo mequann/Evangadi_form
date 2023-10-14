@@ -13,7 +13,7 @@ const Home = ({logout}) => {
 
   },[userData.user, navigate])
   return (
-    <div><h1>Hello {userData.user?.display_name}</h1>
+    <div className='home'><h1>Hello {userData.user?.display_name}</h1>
     <button onClick={logout}>logout</button>
     </div>
   )

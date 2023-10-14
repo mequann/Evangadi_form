@@ -1,0 +1,30 @@
+.navbar{
+    width: 100%;
+    background-color: floralwhite;
+    padding: 15px;
+    display: flex;
+
+}
+.navbar>ul {
+    margin-left: 520px;
+    display: flex;
+
+}
+ul {
+   list-style: none;
+
+}
+ul li{
+    text-decoration: none;
+    padding-right: 50px;
+}
+.navbar button{
+    background-color: #3f3fdf;
+    border-radius: 5px;
+    padding: 3px;
+    width: 100px
+
+}
+.navbar img{
+    margin-left: 300px;
+}

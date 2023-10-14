@@ -3,7 +3,7 @@ const auth = require('../middleware/auth');
 const {createUser, getUsers, getUserById, logIn}=require('./user.controller');
 //create route
 router.post('/',createUser);
-//get all the users rroute
+//get all the users route
 router.get('/all',getUsers);
 //get usersById after autherization
 router.get('/',auth,getUserById);

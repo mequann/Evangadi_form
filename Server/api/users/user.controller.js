@@ -50,8 +50,8 @@ module.exports = {
                 if (err) {
                   res.status(500).json({ msg: "data conection error " });
                 }
-                console.log("resultsss")
-                console.log(results)
+                // console.log("resultsss")
+                // console.log(results)
                 req.body.userId = results[0].user_id;
                 console.log("user data")
                 console.log(req.body);
