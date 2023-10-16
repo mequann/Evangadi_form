@@ -1,0 +1,45 @@
+.login{
+    background-image: url(../SignUp/landdingpage.jpg);
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    display: flex;
+    justify-content: space-between;
+    margin-top: 90px ;
+}
+.login__right{
+    width: 100%;
+    margin-left: 50px;
+}
+.login__form{
+   
+    margin-bottom: 90px ;
+    margin-left: 90px;
+    height: 450px;
+    width: 100%;
+    /* margin-right: 90px; */
+    background-color: #fff;
+    box-shadow:  0px -25px 20px -20px rgba(0,0,0,0.45),
+    25px 0px 20px -20px rgba(0,0,0,0.45),
+    0px 25px 20px -20px rgba(0,0,0,0.45),
+    -25px 0px 20px -20px rgba(0,0,0,0.45);
+}
+
+.login__form input{
+    display: flex;
+    margin-bottom: 10px;
+    margin-left: 30px;
+}
+.login__form input[name='email']{
+    margin-top: 90px;
+}
+.login__form button{
+    margin-left: 30px;
+}
+.login__right button{
+    margin-top: 80px;
+    margin-left: 50px;
+  color:  black;
+  background-color: goldenrod;
+  border: none;
+  padding: 4px;
+}

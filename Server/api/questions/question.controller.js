@@ -1,5 +1,5 @@
 const pool = require("../../config/database");
-const{ask ,answer}=require('./question.service')
+const{ask}=require('./question.service')
 module.exports={
     askQuestion:(req,res)=>{
         const{question,questionDescription}=req.body
