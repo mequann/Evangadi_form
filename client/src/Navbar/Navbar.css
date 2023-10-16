@@ -8,7 +8,6 @@
 .navbar>ul {
     margin-left: 520px;
     display: flex;
-
 }
 ul {
    list-style: none;
@@ -23,7 +22,6 @@ ul li{
     border-radius: 5px;
     padding: 3px;
     width: 100px
-
 }
 .navbar img{
     margin-left: 300px;
