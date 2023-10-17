@@ -15,7 +15,7 @@ app.use("/api/users", userRouter);
 //route for question and answer
 app.use('/api/question',questionRouter)
 app.use('/api/anser',answerRouter)
-  
+     
 const port = process.env.PORT;
 
 app.listen(port, () => {

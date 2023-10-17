@@ -53,7 +53,7 @@ module.exports = {
                 // console.log("resultsss")
                 // console.log(results)
                 req.body.userId = results[0].user_id;
-                console.log("user data")
+                //console.log("user data")
                 console.log(req.body);
 
                 profile(req.body, (err, results) => {

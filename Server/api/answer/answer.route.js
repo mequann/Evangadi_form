@@ -1,7 +1,8 @@
 const router=require('express').Router();
-const {answerQuestion} =require('./answer.controller')
+const {answerQuestion, getAnswer} =require('./answer.controller')
 
-router.post('/answer', answerQuestion)
+router.post('/', answerQuestion)
+router.get('/qanswer',  getAnswer)
 
 
 

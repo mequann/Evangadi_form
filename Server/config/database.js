@@ -28,7 +28,7 @@ let question = `CREATE TABLE if not exists question(
         question_description varchar(255) not null,
         question_code_block varchar(255),
         tags varchar(255),
-        post_id varchar(255) not null  ,
+        post_id varchar(255) not null,
         user_id int not null,
         PRIMARY KEY (question_id),
         UNIQUE KEY (post_id),

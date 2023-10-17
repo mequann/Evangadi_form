@@ -60,7 +60,7 @@ const SignUp = () => {
             type="text"
             name="lastName"
             onChange={handleChange}
-            placeholder="last"
+            placeholder="lastName"
           />
           <br />
           {/* <label>userName</label> */}
@@ -68,7 +68,7 @@ const SignUp = () => {
             type="text"
             name="userName"
             onChange={handleChange}
-            pattern="userName"
+            placeholder="userName"
           />
           <br />
           {/* <label>Email</label> */}
