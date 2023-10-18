@@ -9,14 +9,8 @@ import SignUp from './Pages/SignUp/SignUp';
 import Login from './Pages/Login/Login';
 import Navbar from './Navbar/Navbar';
 import Footer from './Footer/Footer';
-
-
-
-
-
-
- 
-
+import Question from './Pages/Question/Question';
+import Answer from './Pages/Answer/Answer';
 
 function App() {
   const[userData,setUserData]= useDataContext()
@@ -65,6 +59,8 @@ useEffect(()=>{checkLoggedIn()},[])
           <Route path='/' element={<Home logout={logout}/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/signup' element={<SignUp/>}/>
+          <Route path='/ask' element={<Question />}/>
+          <Route path='/answer' element={<Answer />}/>
         </Routes>
     </div>
     <Footer/>

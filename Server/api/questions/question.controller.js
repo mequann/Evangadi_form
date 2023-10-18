@@ -9,8 +9,13 @@ module.exports={
             return res.status(400).json({msg:"please enter your question properly!"})
         }
         else{
-            
-            ask(req.body,(err,result)=>{
+             pool.promise().query('SELECT registration.user_id FROM registration')
+             .then(([row])=>{
+                const userid=row[0].user_id;
+             req.body.userId = userid;
+             console.log(userid,"mmmm")
+             ask(req.body,(err,result)=>{
+               
                 if(err) {
                     console.log(err);
                     return res.status(500).json({ msg: "data connection error from ask" })
@@ -27,6 +32,12 @@ module.exports={
                 )
             }
                 )
+
+            }) 
+            .catch((err)=>{
+                console.log(err.message)
+            })
+         
         }
     },
     getQuestions:(req,res)=>{

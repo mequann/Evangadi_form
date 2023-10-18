@@ -1,0 +1,14 @@
+.ask__question input{
+    display: flex;
+  margin-left: 45px;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+.ask__question button{
+    display: block;
+    margin-top: 30px;
+    margin-left: 70px;
+}
+#qd{
+    margin-left: 45px;
+}

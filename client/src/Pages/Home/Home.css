@@ -1,5 +1,22 @@
 .home{
+    display: block;
+    margin-left: 50px;
+}
+.home__great{
     margin-left: 50px;
     display: flex;
     justify-content: space-around;
+}
+
+.home button{
+  margin-left: 50px;
+ 
+}
+.avatar{
+  transform: scale(2.8);
+  
+}
+.outer{
+  margin-top: 50px;
+  margin-left: 35px;
 }

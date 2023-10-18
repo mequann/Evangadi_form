@@ -12,16 +12,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // route for  creating user and profile
 app.use("/api/users", userRouter);
-//route for question and answer
-app.use('/api/question',questionRouter)
-app.use('/api/anser',answerRouter)
+//route for question and answer 
+app.use('/api/question',questionRouter) 
+app.use('/api/answer',answerRouter) 
      
-const port = process.env.PORT;
+const port = process.env.PORT; 
 
-app.listen(port, () => {
-  console.log("listning though port", port);
-});
-         
-
-
-
+app.listen(port, () => { 
+  console.log("listning though port", port); 
+});      
+              
+     
+    
+     
+ 
+  

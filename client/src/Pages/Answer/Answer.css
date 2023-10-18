@@ -1,0 +1,18 @@
+.answer{
+    margin-left: 40px;
+    margin-top: 20px;
+   display: flex;
+
+    
+}
+.answer #qa{
+    margin-bottom: 80px;
+  
+}
+.answer button{
+    background-color: goldenrod;
+    border: none;
+    padding: 4px;
+
+
+}
