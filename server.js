@@ -14,16 +14,16 @@ app.use(express.json());
 app.use("/api/users", userRouter);
 //route for question and answer 
 app.use('/api/question',questionRouter) 
-app.use('/api/answer',answerRouter) 
+app.use('/api/answer',answerRouter)   
      
 const port = process.env.PORT; 
-
-app.listen(port, () => { 
+   
+app.listen(port, () => {    
   console.log("listning though port", port); 
-});      
-              
-     
-    
-     
- 
+});             
+                 
+         
+       
+       
   
+   

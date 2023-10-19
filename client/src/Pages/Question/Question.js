@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 function Question() {
     const[question,setQuestion]=useState("")
     const [qdescription,setQdescription]=useState('')
+    // const [form, setForm] = useState({});
     const navigate=useNavigate()
     useEffect(()=>{ 
         // if(!question||!qdescription) {
@@ -15,14 +16,27 @@ function Question() {
         
 
     },[question])
+    // const handlechange = (e) => {
+    //     setForm({ ...form, [e.target.name]: e.target.value });
+    //   };
     //handdle submit
-    const handdlePost=async()=>{
-        await axios.post("http://localhost:4000/api/question/",{
+    const handdlePost=async(e)=>{
+        e.preventDefault()
+        try {
+            await axios.post("http://localhost:4000/api/question/",{
             question,
             qdescription
 
             
         })
+        navigate('/')
+
+            
+        }
+         catch (error) {
+            console.log(error.message)
+            
+        }
 
     }
 

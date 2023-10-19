@@ -14,31 +14,31 @@ import Answer from './Pages/Answer/Answer';
 
 function App() {
   const[userData,setUserData]= useDataContext()
-  const checkLoggedIn=async()=>{
-    let token=localStorage.getItem('auth-token')
-    if(token==null) {
-      localStorage.setItem('auth-token','')
-      token='';   
-    }  
-    else{
-    try{
-        //if token exists in localstorage then use auth to verify token and get user info
-        const userRes=await axios.get('http://localhost:4000/api/users',{
-          headers:{'x-auth-token':token}
-        })
-        setUserData({
-          token,
-          user:{
-      id:userRes.data.data.user_id,
-      display_name:userRes.data.data.user_name
-          }
-        })
-    }
-    catch (err) {
-      console.log("problem", err.message);
-    }
-    }
-  }
+  // const checkLoggedIn=async()=>{
+  //   let token=localStorage.getItem('auth-token')
+  //   if(token==null) {
+  //     localStorage.setItem('auth-token','')
+  //     token='';   
+  //   }  
+  //   else{
+  //   try{
+  //       //if token exists in localstorage then use auth to verify token and get user info
+  //       const userRes=await axios.get('http://localhost:4000/api/users',{
+  //         headers:{'x-auth-token':token}
+  //       })
+  //       setUserData({
+  //         token,
+  //         user:{
+  //     id:userRes.data.data.user_id,
+  //     display_name:userRes.data.data.user_name
+  //         }
+  //       })
+  //   }
+  //   catch (err) {
+  //     console.log("problem", err.message);  
+  //   }
+  //   }
+  // }
   const logout=()=>{
     setUserData({
       token:undefined,
@@ -49,7 +49,7 @@ function App() {
   }
   //set the global state with user info
   
-useEffect(()=>{checkLoggedIn()},[])
+// useEffect(()=>{checkLoggedIn()},[])
   return (
   
       <Router>

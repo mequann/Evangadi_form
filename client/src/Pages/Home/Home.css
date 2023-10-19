@@ -14,9 +14,11 @@
 }
 .avatar{
   transform: scale(2.8);
+ 
   
 }
 .outer{
+  display: flex;
   margin-top: 50px;
   margin-left: 35px;
 }

@@ -8,23 +8,53 @@ import axios  from 'axios';
 
 const Home = ({logout}) => {
   const [userData,setUserData]= useDataContext();
+  const [question, setQuestion] = useState([]);
   const navigate=useNavigate()
   useEffect(()=>{
     if(!userData.user) {
       navigate('/login')
     }
-
+    //rendering  question
+  const getQ=async()=>{
+    try 
+    {
+     const question=await axios.get('http://localhost:4000/api/question/qbu')
+     const rr=question.data
+     
+ // console.log(question)
+ setQuestion(rr)
+   
+    } 
+    catch (error) {
+     console.log(error.message)
+     
+    }
+   }
+   getQ()
   },[userData.user, navigate])
+
   const ask=()=>{
     navigate('/ask')
   }
   //rendering  question
-  const getQ=async()=>{
-    const question=await axios.get('http://llocalhost:4000/api/question/')
-    question.filter(q=>{
-
-    })
-  }
+//   const getQ=async()=>{
+//    try 
+//    {
+//     const question=await axios.get('http://localhost:4000/api/question/qbu')
+    
+// // console.log(question)
+// setQuestion(question)
+  
+//    } 
+//    catch (error) {
+//     console.log(error.message)
+    
+//    }
+//   }
+   
+  // getQ()
+   console.log(question)
+  
   return (
     <div className='home'>
       <div className='home__great'>
@@ -35,9 +65,16 @@ const Home = ({logout}) => {
       <button onClick={ask}>Ask Question</button>
       <div  className='outer'>
       <LinkedInIcon className='avatar'/>
+      <h1>{userData.user?.display_name}</h1>
+      {question.map((item,id) => (
+  <div key={id}>{item.question}</div>
+))}
+     
+      
       </div>
     </div>
   )
+
 }
 
 export default Home

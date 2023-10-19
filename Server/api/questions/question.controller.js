@@ -1,10 +1,10 @@
 const pool = require("../../config/database");
-const{ask,questionByUser}=require('./question.service')
+const{ask,questionByUser,getallQuestions}=require('./question.service')
 module.exports={
     askQuestion:(req,res)=>{
-        const{question,questionDescription}=req.body
+        const{question,  qdescription}=req.body
         console.log(req.body);
-        if(!question||!questionDescription){
+        if(!question||!  qdescription){
 
             return res.status(400).json({msg:"please enter your question properly!"})
         }
@@ -13,6 +13,8 @@ module.exports={
              .then(([row])=>{
                 const userid=row[0].user_id;
              req.body.userId = userid;
+             req.body.post_id = userid;
+             
              console.log(userid,"mmmm")
              ask(req.body,(err,result)=>{
                
@@ -26,7 +28,7 @@ module.exports={
                     if (err) {
                    return     res.status(500).json({ msg: "data conection error from ask2 " });
                       }
-                      req.bod.questionId=result[0].question_id
+                      req.body.questionId=result[0].question_id
                       return res.status(200).json({data:result})
                 }
                 )
@@ -41,7 +43,13 @@ module.exports={
         }
     },
     getQuestions:(req,res)=>{
-        questionByUser(req.body,(err,results)=>{
+        console.log("dershalew")
+        pool.promise().query('SELECT registration.user_id FROM registration')
+             .then(([row])=>{
+                const userid=row[0].user_id;
+             req.body.userId = userid;})
+       console.log("dershalew 11")
+        questionByUser((err,results)=>{
             if(err)
             {console.log(err)
         return  res.status(500).json({msg:"data connection error from q"})}
@@ -53,5 +61,16 @@ module.exports={
             data:results
         })
         })
-    }
+    },
+    // getQuestions:(req,res)=>{
+    //     getallQuestions(req.body,(err,results)=>{
+    //         if(err) {
+    //             console.log(err.message)
+    //             return res.status(500).json({msg:"data connection error from444  "})
+    //         }
+    //         return res.status(200).json({
+    //             data:results
+    //         })
+    //     })
+    // }
 }
