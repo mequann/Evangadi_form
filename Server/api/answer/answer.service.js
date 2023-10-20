@@ -14,9 +14,9 @@ module.exports = {
       }
     );
   },
-  anserByUser:(id,callback)=>{
-    pool.query('SELECT user_id,user_name FROM registration RIGHT JION answer ON registration.user_id=answer>user_id WHERE registration.user_id=? '
-    ,[id]
+  anserByUser:(callback)=>{
+    pool.query('SELECT user_id,user_name FROM registration JION answer ON registration.user_id=answer.user_id  '
+    
     ,(err,result)=>{
       if(err) {
         return callback(err)
@@ -25,9 +25,9 @@ module.exports = {
       return callback(null,result)
     })
   },
-  answerAndQuestion:(id,callback)=>{
-    pool.query('SELECT question_id,question FROM question RIGHT JION answer ON question.question_id=answer.question_id WHERE question.question_id=?',
-    [id],(err,result)=>{
+  answerAndQuestion:(callback)=>{
+    pool.query('SELECT question_id,question ,question_description FROM question JION answer ON question.question_id=answer.question_id ?',
+    (err,result)=>{
       if(err) {
         return callback(err)
         

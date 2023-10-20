@@ -1,7 +1,7 @@
 .answer{
     margin-left: 40px;
     margin-top: 20px;
-   display: flex;
+display: block;
 
     
 }
@@ -15,4 +15,11 @@
     padding: 4px;
 
 
+}
+.avatar{
+    transform: scale(2.5);
+    padding: 12px;
+}
+.answer__ques{
+    display: block;
 }

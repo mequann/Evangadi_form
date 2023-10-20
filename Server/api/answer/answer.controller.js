@@ -19,7 +19,7 @@ module.exports={
                     if (err) {
                         res.status(500).json({ msg: "data conection error from answer " });
                       }
-                    //   req.bod.questionId=result[0].question_id
+                      req.bod.questionId=result[0].question_id
                 }
                 )
                 return res.status(200).json({msg:"your answer was posted",data:result})
@@ -27,8 +27,21 @@ module.exports={
                 )
         }
     },
+    QA:(req,res)=>{
+        answerAndQuestion((err,results)=>{
+            if(err) {
+                return res.status(500).json({msg:"data connection from get answer"})
+            }
+            if(!results) {
+                return res.status(404).json({msg:"there is no answer posted"})
+            }
+            return res.status(200).json({data:results})
+
+        })
+
+    },
     getAnswer:(req,res)=>{
-        anserByUser(req.body,(err,results)=>{
+        anserByUser((err,results)=>{
             if(err) {
                 return res.status(500).json({msg:"data connection from get answer"})
             }

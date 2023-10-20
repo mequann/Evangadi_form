@@ -16,7 +16,7 @@ return callback(null,result)
         )
     },
 questionByUser:(callback)=>{
-    pool.query('SELECT user_name,question,question_description FROM registration JOIN question ON  registration.user_id=question.user_id'
+    pool.query('SELECT user_name,question_id,question,question_description FROM registration JOIN question ON  registration.user_id=question.user_id'
     ,(err,result)=>{
         if(err) {
             return callback(err)

@@ -4,12 +4,12 @@ module.exports={
     askQuestion:(req,res)=>{
         const{question,  qdescription}=req.body
         console.log(req.body);
-        if(!question||!  qdescription){
+        if(!question||!qdescription){
 
             return res.status(400).json({msg:"please enter your question properly!"})
         }
         else{
-             pool.promise().query('SELECT registration.user_id FROM registration')
+             pool.promise().query('SELECT user_id FROM registration')
              .then(([row])=>{
                 const userid=row[0].user_id;
              req.body.userId = userid;
