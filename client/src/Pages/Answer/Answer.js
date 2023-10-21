@@ -7,42 +7,61 @@ function Answer() {
   const [answer, setAnswer] = useState("");
   const [question, setQuestion] = useState([]);
   //post answer
+  var x = parseInt(localStorage.getItem("id"));
+  console.log(x)
   useEffect(() => {
-    const getQ = async () => {
+    const getQ =  async() => {
       try {
-        const question = await fetch("http://localhost:4000/api/question/qbu");
-        const rr = await question.json();
+        const question = await axios.get("http://localhost:4000/api/question/qbu");
+        // console.log(question)
+        let filteredq=question?.data?.data
+        // console.log(filteredq)
+        // let filtered=filteredq?.filter((q)=> question.question_id === x)
+        setQuestion(filteredq?.filter((q)=> q.question_id === x))
 
-        //  console.log(question)
-        setQuestion(rr.data);
+        // const rr =  question.then(res => res.json());
+      //  const rr = question.json();
+        // rr.then(question => {
+        //   let questions = question.data
+        //   console.log(questions)
+        //   let y = questions.filter(question =>  question.question_id === x)
+        //   console.log(y)
+        //   setQuestion(y)
+
+        // }
+        //   )
+      //  const filteredq= rr.then(question => question.filter((q)=> x===q.question_id ))
+        // console.log(filteredq)
+        // setQuestion(filteredq);
       } catch (error) {
-        //  console.log(error.message)
+         console.log(error.message)
       }
     };
     getQ();
   }, []);
+  console.log(question)
+  
   //post answer
   const postAnswer = async (e) => {
     e.preventDefault();
     await axios.post("http://localhost:4000/api/answer/", {
       answer,
     });
+    const qans= await axios.get("http://localhost:4000/api/answer/")
+
   };
-  var x = parseInt(localStorage.getItem("id"));
+
 
   return (
     <div className="answer">
       <div>
-      {question.filter((q) => {
-  if (x === q.question_id) {
-    return <div key={q.question_id}><h2>{q.question}</h2></div>;
-  }
-  return null;
-})}
+   <h2> {question[0]?.question}</h2>  
+   <h5> {question[0]?.question_description}</h5>  
       </div>
       <>{<ProfileIcon className="avatar" />}</>
+
       <div>
-        <form onSubmit={postAnswer}>
+        <form >
           <textarea
             name=""
             id="qa"
@@ -51,7 +70,7 @@ function Answer() {
             value={answer}
             onChange={(e) => setAnswer(e.target.value)}
           ></textarea>
-          <button>post your answer</button>
+          <button onSubmit={postAnswer}>post your answer</button>
         </form>
       </div>
     </div>
