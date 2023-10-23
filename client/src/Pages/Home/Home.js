@@ -11,9 +11,9 @@ const Home = ({ logout }) => {
   const [questionId, setQuestionId] = useState();
   const navigate = useNavigate();
   useEffect(() => {
-    // if(!userData.user) {
-    //   navigate('/login')
-    // }
+    if(!userData.user) {
+      navigate('/login')
+    }
     //rendering  question
     //   const getQ=async()=>{
     //     try
@@ -69,12 +69,15 @@ const Home = ({ logout }) => {
       </div>
       <button onClick={ask}>Ask Question</button>
       <div className="outer">
-        <h1>{userData.user?.display_name}</h1>
+     
         <div>
-          {" "}
-          {question.map((q) => (
+         
+      {question.map((q) => (
             <div key={q.id} className="home__display">
-              {<ProfileIcon className="avatar" />}
+              {<ProfileIcon className="avatar" />  }
+              {<sub className="user">{userData.user?.display_name}</sub>}
+              
+          
               {/* <Link to='/answer' style={{textDecoration:"none", marginLeft:"35px"}}> {q.question }
           </Link> */}
 

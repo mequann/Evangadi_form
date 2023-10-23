@@ -9,20 +9,20 @@ module.exports={
             return res.status(400).json({msg:"please enter your answer properly!"})
         }
         else{
-            answerq(req.body,(err,result)=>{
+            pool.promise().query('SELECT registration.user_id,question_id FROM registration JOIN question')
+            .then(([row])=>{
+                req.body.userId=row[0].user_id
+                req.body.questionId=row[0].question_id
+               answerq(req.body,(err,result)=>{
                 // console.log(req.body,"oooooo")
                 if(err) {
                     console.log(err.message);
                     return res.status(500).json({ msg: "data connection error from answer11" })
                 };
-                pool.query('SELECT user_id FROM registration JOIN question',(err,result)=>{
-                    if(err) {
-                        return res.status(500).json({msg:"data connectiion error"})
-                        
-                    }
-                    req.bod.userId=result[0].user_id
-                    req.bod.questionId=result[0].question_id
-                    return res.status(200).json({data:result})
+               
+                    // console.log(result)
+                   
+                    return res.status(200).json({msg:"answer posted successfully", data:result})
                 }
                 )
                 // pool.query('SELECT question_id FROM question ',
@@ -36,8 +36,7 @@ module.exports={
                 // }
                 // );
             
-            }
-                )
+            })
         }
     },
     // QA:(req,res)=>{
@@ -56,6 +55,7 @@ module.exports={
     getAnswer:(req,res)=>{
         anserByUser((err,results)=>{
             if(err) {
+                console.log(err.message)
                 return res.status(500).json({msg:"data connection from get answer"})
             }
             if(!results) {

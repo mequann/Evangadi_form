@@ -3,7 +3,7 @@ const{ask,questionByUser,getallQuestions}=require('./question.service')
 module.exports={
     askQuestion:(req,res)=>{
         const{question,  qdescription}=req.body
-        console.log(req.body);
+        // console.log(req.body);
         if(!question||!qdescription){
 
             return res.status(400).json({msg:"please enter your question properly!"})
@@ -13,9 +13,9 @@ module.exports={
              .then(([row])=>{
                 const userid=row[0].user_id;
              req.body.userId = userid;
-             req.body.post_id = userid;
+            //  req.body.post_id = userid;
              
-             console.log(userid,"mmmm")
+            //  console.log(userid,"mmmm")
              ask(req.body,(err,result)=>{
                
                 if(err) {
@@ -43,11 +43,12 @@ module.exports={
         }
     },
     getQuestions:(req,res)=>{
-        console.log("dershalew")
+        // console.log("dershalew")
         pool.promise().query('SELECT registration.user_id FROM registration')
              .then(([row])=>{
                 const userid=row[0].user_id;
-             req.body.userId = userid;})
+             req.body.userId = userid;
+            })
        console.log("dershalew 11")
         questionByUser((err,results)=>{
             if(err)
