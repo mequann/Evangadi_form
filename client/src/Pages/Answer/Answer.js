@@ -9,7 +9,7 @@ function Answer() {
   const [question, setQuestion] = useState([]);
   const navigate=useNavigate()
   var x = parseInt(localStorage.getItem("id"));
-  console.log(x)
+  
   useEffect(() => {
     const getQ =  async() => {
       try {
@@ -44,22 +44,26 @@ function Answer() {
   //post answer
   const handdlePost=async(e)=>{
     e.preventDefault()
-    try {
-        await axios.post("http://localhost:4000/api/answer/",{
+   try {
+      let y=parseInt(localStorage.getItem('user-id'))
+    const response= await axios.post("http://localhost:4000/api/answer/",{
         answer,
+        userId:y,
+        questionId:x
         })
+        // console.log(response.data.msg)
         
     navigate('/answer')
 
         
     }
      catch (error) {
-        console.log(error.message)
+        console.log(error.response.data.msg)
         
     }
 
 }
-//render the answers
+//fetching the answers
 useEffect(()=>{
   const renderAnswer=async(e)=>{
     const qans= await fetch("http://localhost:4000/api/answer/qanswer")
@@ -67,43 +71,55 @@ useEffect(()=>{
     .then((tt)=> setAnswer(tt.data))
             // console.log(tt)
             // setAnswer(qans.data.data)
-          }
+  }
           renderAnswer();
 
 },[])
+//rendering answers
+const renderAnswer=(answerr)=>{
+  if(!Array.isArray(answerr)){
+    return "write your answer"
+  }
+  else{
+    answerr.map((a,i)=>{
+        
+      if(x!==a.question_id ||!a) {
+       
+           return ""
+      }
+      else{
+        return(
+          <> 
+         <div key={i}> {<ProfileIcon className="avatar" />}
+         <div>{a.user_name}</div>
+           {a.answer}
+           
+           </div>
+          
+           </>
 
+         )
+      }
+
+    })
+
+  }
+}
 // console.log(question)
   console.log(answer)
-
-
   return (
     <div className="answer">
       <div>
    <h2> {question[0]?.question}</h2>  
    <h5> {question[0]?.question_description}</h5>  
       </div>
-      {answer.map((a,i)=>{
-        
-        if(x!==a.question_id ||!a) {
-         
-             return ""
-        }
-        else{
-          return(
-            <> 
-           <div key={i}> {<ProfileIcon className="avatar" />}
-             {a.answer}
-             </div>
-            
-             </>
- 
-           )
-        }
-
-      })}
+      {
+     
+     renderAnswer(answer)
+    }
      
       <div>
-        <form onClick={handdlePost}>
+        <form onSubmit={handdlePost}>
           <textarea
             name="answer"
             id="qa"

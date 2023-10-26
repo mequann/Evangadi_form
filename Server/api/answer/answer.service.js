@@ -16,7 +16,7 @@ module.exports = {
   },
   anserByUser: (callback) => {
     pool.query(
-      "SELECT registration.user_id,user_name question ,question.question_id,answer FROM registration JOIN question  ON registration.user_id=question.user_id  JOIN answer ON question.question_id =answer.question_id",
+      "SELECT registration.user_id,user_name ,question ,question.question_id,answer FROM registration JOIN question  ON registration.user_id=question.user_id  JOIN answer ON question.question_id =answer.question_id",
 
       (err, result) => {
         if (err) {

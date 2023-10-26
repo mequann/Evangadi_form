@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { useDataContext } from "../../Context/UserContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 import ProfileIcon from "@material-ui/icons/AccountCircle";
 import axios from "axios";
 
 const Home = ({ logout }) => {
   const [userData, setUserData] = useDataContext();
   const [question, setQuestion] = useState([]);
-  const [questionId, setQuestionId] = useState();
+
+  // const [userid,setuserIid]=useState([]);
   const navigate = useNavigate();
+
+  let userId=parseInt(localStorage.getItem("user-id"))
+  console.log(userId)
   useEffect(() => {
     if(!userData.user) {
       navigate('/login')
@@ -29,7 +33,7 @@ const Home = ({ logout }) => {
     //    }
     //    getQ()
   }, [userData.user, navigate]);
-
+//redirecting to  question page
   const ask = () => {
     navigate("/ask");
   };
@@ -41,8 +45,10 @@ const Home = ({ logout }) => {
           "http://localhost:4000/api/question/qbu"
         );
 
-        // console.log(question)
+        console.log(question)
         setQuestion(question.data.data);
+        
+        
       } catch (error) {
         console.log(error.message);
       }
@@ -58,8 +64,14 @@ const Home = ({ logout }) => {
   const gg = (id) => {
     localStorage.setItem("id", id);
     navigate("/answer");
+
   };
+  //
+  
   console.log(question);
+  // console.log(userid)
+  // console.log(userData.user?.id)
+  
 
   return (
     <div className="home">
@@ -72,18 +84,22 @@ const Home = ({ logout }) => {
      
         <div>
          
-      {question.map((q) => (
+      {question.map((q) => {
+        
+            return<>
             <div key={q.id} className="home__display">
               {<ProfileIcon className="avatar" />  }
-              {<sub className="user">{userData.user?.display_name}</sub>}
+              {<sub className="user">{q.user_name}</sub>}  
               
-          
-              {/* <Link to='/answer' style={{textDecoration:"none", marginLeft:"35px"}}> {q.question }
-          </Link> */}
-
               <p onClick={() => gg(q.question_id)}>{q.question}</p>
+             
             </div>
-          ))}
+            <hr />
+            </>
+}
+)
+
+}
         </div>
       </div>
     </div>

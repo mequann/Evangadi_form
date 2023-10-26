@@ -21,11 +21,15 @@ const Login = () => {
           password: form.password,
         }
       );
+      console.log(loginRes)
+  
       setUserData({
         token: loginRes.data.token,
         user: loginRes.data.user,
       });
+      console.log(userData)
       localStorage.setItem("auth-token", loginRes.data.token);
+      localStorage.setItem('user-id', loginRes.data.user.id)
       //navigate to  home page
       navigte("/");
     } catch (err) {

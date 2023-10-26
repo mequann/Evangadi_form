@@ -30,6 +30,7 @@ let question = `CREATE TABLE if not exists question(
         tags varchar(255),
         post_id varchar(255) ,
         user_id int not null,
+        time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY (question_id),
        
         FOREIGN KEY (user_id) REFERENCES registration(user_id)
@@ -40,6 +41,7 @@ answer varchar(255) not null,
 answer_code_block varchar(255),
 user_id int not null, 
 question_id int not null ,
+time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY (answer_Id) ,
 
 FOREIGN KEY (user_Id)  REFERENCES registration(user_Id),
