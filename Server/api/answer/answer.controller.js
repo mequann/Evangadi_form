@@ -10,6 +10,7 @@ module.exports={
         }
 else{
     answerq(req.body,(err,result)=>{
+        console.log(req.body)
         if(err) {
             return res.status(400).json({msg:"data connection erro"})
         }

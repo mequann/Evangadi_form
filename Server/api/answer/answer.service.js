@@ -3,6 +3,7 @@ const pool = require("../../config/database");
 
 module.exports = {
   answerq: (data, callback) => {
+    console.log(data)
     pool.query(
       "INSERT INTO answer( user_id,answer,question_id,answer_code_block ) values(?,?,?,?)",
       [data.userId, data.answer, data.questionId, ""],
@@ -16,7 +17,7 @@ module.exports = {
   },
   anserByUser: (callback) => {
     pool.query(
-      "SELECT registration.user_id,user_name ,question ,question.question_id,answer FROM registration JOIN question  ON registration.user_id=question.user_id  JOIN answer ON question.question_id =answer.question_id",
+      "SELECT registration.user_id,user_name ,answer,answer.question_id FROM registration JOIN answer ON registration.user_id =answer.user_id",
 
       (err, result) => {
         if (err) {

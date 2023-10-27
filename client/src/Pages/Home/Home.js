@@ -91,7 +91,8 @@ const Home = ({ logout }) => {
               {<ProfileIcon className="avatar" />  }
               {<sub className="user">{q.user_name}</sub>}  
               
-              <p onClick={() => gg(q.question_id)}>{q.question}</p>
+              <p onClick={() => gg(q.question_id)}>{q.question} <h6 className="time">{q.time}</h6></p>
+
              
             </div>
             <hr />

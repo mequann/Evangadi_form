@@ -5,8 +5,9 @@ import ProfileIcon from "@material-ui/icons/AccountCircle";
 import { useNavigate } from 'react-router-dom';
 
 function Answer() {
-  const [answer, setAnswer] = useState([]);
+  const [answer, setAnswer] = useState("");
   const [question, setQuestion] = useState([]);
+  const[test,setTest]=useState(false)
   const navigate=useNavigate()
   var x = parseInt(localStorage.getItem("id"));
   
@@ -42,6 +43,7 @@ function Answer() {
   // console.log(question)
   
   //post answer
+  
   const handdlePost=async(e)=>{
     e.preventDefault()
    try {
@@ -52,8 +54,19 @@ function Answer() {
         questionId:x
         })
         // console.log(response.data.msg)
-        
-    navigate('/answer')
+        document.getElementById("myForm").reset();
+    // navigate('/answer')
+      // Check if the response was successful.
+       if (response.status === 200) {
+        if(test){
+          setTest(false)
+        }
+        else{
+          setTest(true)
+        }
+        // Update the state variable with the new answer data.
+        // setAnswer(await response.json());
+      }
 
         
     }
@@ -61,50 +74,52 @@ function Answer() {
         console.log(error.response.data.msg)
         
     }
+    
+  // Render the answer.
+  // renderAnswer(answer);
 
 }
+
+
+
 //fetching the answers
 useEffect(()=>{
-  const renderAnswer=async(e)=>{
+  const fetchAnswer=async(e)=>{
     const qans= await fetch("http://localhost:4000/api/answer/qanswer")
     const tt=qans.json()
-    .then((tt)=> setAnswer(tt.data))
+    .then((tt)=> {
+      let filterdAnswer=tt.data
+      console.log(filterdAnswer)
+      return setAnswer(filterdAnswer?.filter(a=> a.question_id===x))
+    }
+    )
             // console.log(tt)
             // setAnswer(qans.data.data)
   }
-          renderAnswer();
+          fetchAnswer();
 
-},[])
+},[test])
 //rendering answers
-const renderAnswer=(answerr)=>{
-  if(!Array.isArray(answerr)){
-    return "write your answer"
+const renderAnswer = (answer) => {
+  if (!Array.isArray(answer)) {
+    return "Write answer";
+  } else {
+    return answer.map((a, i) => {
+      return (
+          <div key={i}>
+            <ProfileIcon className="avatar" />
+            <div>{a.user_name}</div>
+            <div>{a.answer}</div>
+          </div>
+        );
+      
+    });
   }
-  else{
-    answerr.map((a,i)=>{
-        
-      if(x!==a.question_id ||!a) {
-       
-           return ""
-      }
-      else{
-        return(
-          <> 
-         <div key={i}> {<ProfileIcon className="avatar" />}
-         <div>{a.user_name}</div>
-           {a.answer}
-           
-           </div>
-          
-           </>
+};
+// const form=document.querySelector('form')
+// form.reset()
 
-         )
-      }
 
-    })
-
-  }
-}
 // console.log(question)
   console.log(answer)
   return (
@@ -113,16 +128,14 @@ const renderAnswer=(answerr)=>{
    <h2> {question[0]?.question}</h2>  
    <h5> {question[0]?.question_description}</h5>  
       </div>
-      {
-     
-     renderAnswer(answer)
-    }
+      <div>{renderAnswer(answer)
+    }</div>
      
       <div>
-        <form onSubmit={handdlePost}>
+        <form onSubmit={handdlePost} id="myForm">
           <textarea
             name="answer"
-            id="qa"
+            
             cols="255"
             rows="10"
             // value={answer}
