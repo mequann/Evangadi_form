@@ -1,14 +1,15 @@
 *{
     margin: 0;
+    padding: 0;
 }
 .footer{
-    display: flex;
     justify-content:space-around;
     background-color: lightsteelblue;
     margin-top: 230px;
     padding-top: 22px;
-    padding-bottom: 90px;
+    padding-bottom: 50px;
     margin-right: 0;
+    width: 100%;
 }
 .footer__info ul{
     display: block;
@@ -23,5 +24,30 @@
     padding: 4px;
 border-radius: 3px;
     margin-bottom: 14px;
+    margin-left: -160px;
 }
-
+.footer__logo img{
+    margin-left: -160px;
+}
+@media screen and (max-width:789px) {
+    
+    .footer{
+        display: block;
+        padding-left: 50px;
+    }
+    .footer__logo img{
+        margin-left: 0px;
+    }
+    .footer__logo .link{
+        margin-left: 0px;
+    }
+    .footer__contact{
+border: none;
+    }
+}
+@media screen and (min-width:790px) {
+    
+    .footer{
+        display: flex;
+    }
+}

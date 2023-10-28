@@ -1,9 +1,11 @@
 
 import React,{ useEffect } from 'react';
+// import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 import axios from 'axios'
 import {useDataContext } from './Context/UserContext';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+
 import Home from './Pages/Home/Home';
 import SignUp from './Pages/SignUp/SignUp';
 import Login from './Pages/Login/Login';

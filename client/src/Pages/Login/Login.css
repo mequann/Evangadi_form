@@ -2,7 +2,7 @@
     background-image: url(../SignUp/landdingpage.jpg);
     background-repeat: no-repeat;
     /* background-size: cover; */
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
     margin-top: 90px ;
 }
@@ -11,7 +11,6 @@
     margin-left: 50px;
 }
 .login__form{
-   
     margin-bottom: 90px ;
     margin-left: 90px;
     height: 450px;
@@ -42,4 +41,20 @@
   background-color: goldenrod;
   border: none;
   padding: 4px;
+}
+@media screen  and (max-width:789px){
+    .login{
+        display: block;
+    }
+    
+    
+    
+    
+    
+}
+@media screen  and (min-width:790px){
+    .login{
+        display: flex;
+    }
+    
 }

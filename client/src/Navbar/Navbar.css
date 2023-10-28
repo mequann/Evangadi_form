@@ -3,11 +3,19 @@
     background-color: floralwhite;
     padding: 15px;
     display: flex;
+  justify-content: space-between;
 
 }
-.navbar>ul {
+/* .navbar>ul {
     margin-left: 520px;
     display: flex;
+
+} */
+.navb__img{
+    width: 200px;
+    height: 10hv;
+    margin-right: 190px;
+    margin-left: 50px;
 }
 ul {
    list-style: none;
@@ -17,12 +25,46 @@ ul li{
     text-decoration: none;
     padding-right: 50px;
 }
+.navb__list{
+    display: none;
+}
 .navbar button{
     background-color: #3f3fdf;
     border-radius: 5px;
     padding: 3px;
     width: 100px
 }
-.navbar img{
-    margin-left: 300px;
+
+
+.navb__toggle{
+    color: #000;
+    margin-right: 60px;
+    display: inline-block
+}
+@media only screen and (max-width:789px){
+    .Navbar__ToggleShow {
+        display: flex;
+        background-color: brown;
+        margin-top: 60px;
+        transition:  1s ease-in;
+        padding: 8px;
+    
+      }
+      .Navbar__ToggleShow  ul{
+        display: flex;
+      }
+    
+}
+@media screen and (min-width:790px) {
+
+    .navb__list {
+    display: flex;
+    
+}
+    .navb__list ul{
+    display: flex;
+}
+.navb__toggle{
+    display: none;
+}
 }

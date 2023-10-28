@@ -45,7 +45,7 @@ const Login = () => {
           {/* <label>Email</label> */}
           <input
             type="text"
-            name="email"
+            name="email" id="email"
             placeholder="Email"
             onChange={handlechange}
           />
