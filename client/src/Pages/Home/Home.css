@@ -8,8 +8,12 @@
     justify-content: space-around;
 }
 
-.home button{
+.home__great button{
   margin-left: 50px;
+  margin-top: 23px;
+  color: grey;
+  padding: 7px;
+  border-radius: 11px;
  
 }
 .avatar{

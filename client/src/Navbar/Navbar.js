@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import"./Navbar.css"
 import DehazeIcon from "@material-ui/icons/Dehaze";
@@ -6,6 +6,7 @@ import DehazeIcon from "@material-ui/icons/Dehaze";
 import { Link } from 'react-router-dom'
 
 const Navbar = () => {
+  const [click,setClick]=useState(false)
 
   useEffect(()=>{
     function classToggle() {
@@ -15,10 +16,14 @@ const Navbar = () => {
     };
     classToggle();
     
-    document.querySelector('.navb__toggle')
+   const kick= document.querySelector('.navb__toggle')
       .addEventListener('click', classToggle);
+      if(kick){
+        setClick(true)
+
+      }
     
-  })
+  },[])
   
   
 
