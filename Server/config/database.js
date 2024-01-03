@@ -1,11 +1,10 @@
 const mysql = require("mysql2");
-const pool = mysql.createPool({
-  user: process.env.DB_USER,
+const data={user: process.env.DB_USER,
   password: process.env.DB_PASS,
   host: process.env.DB_HOST,
   database: process.env.MYSQL_DB,
-  connectionLimit: 10,
-});
+  connectionLimit: 10,}
+const pool = mysql.createPool(data);
 let registration = `CREATE TABLE if not exists registration(
         user_id int auto_increment,
         user_name varchar(255) not null,

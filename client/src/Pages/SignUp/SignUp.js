@@ -37,7 +37,7 @@ const SignUp = () => {
       localStorage.setItem("auth-token", loginRes.data.token);
       navigate("/");
     } catch (err) {
-      console.log(err.response.data.msg);
+      console.log(err.response.message);
     }
   };
   //handleSubmit()

@@ -12,10 +12,11 @@ const jwt = require("jsonwebtoken");
 module.exports = {
   createUser: (req, res) => {
     const { userName, firstName, lastName, email, password } = req.body;
-    console.log(req.body);
+  
     if (!userName || !firstName || !lastName || !email || !password) {
       return res.status(400).json({ msg: "Not all fields are not provided!" });
     }
+    console.log(req.body,'lllll');
     if (password.length < 8)
       return res
         .status(400)
